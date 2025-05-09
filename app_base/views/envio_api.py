@@ -26,7 +26,7 @@ def parse_envio(data: dict) -> Envio:
 
 @require_http_methods(["GET"])
 def listar_envios(request):
-    response = supabase.table("envio").select("*").execute()
+    response = supabase.table("envios").select("*").execute()
     return JsonResponse(response.data, safe=False)
 
 
@@ -36,7 +36,7 @@ def crear_envio(request):
     try:
         data = json.loads(request.body)
         envio = parse_envio(data)
-        result = supabase.table("envio").insert(envio.__dict__).execute()
+        result = supabase.table("envios").insert(envio.__dict__).execute()
         return JsonResponse(result.data, safe=False, status=201)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
@@ -48,7 +48,7 @@ def actualizar_envio(request, envio_id):
     try:
         data = json.loads(request.body)
         envio = parse_envio(data)
-        result = supabase.table("envio").update(envio.__dict__).eq("id_envio", str(envio_id)).execute()
+        result = supabase.table("envios").update(envio.__dict__).eq("id_envio", str(envio_id)).execute()
         return JsonResponse(result.data, safe=False)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
@@ -58,7 +58,7 @@ def actualizar_envio(request, envio_id):
 @require_http_methods(["DELETE"])
 def eliminar_envio(request, envio_id):
     try:
-        result = supabase.table("envio").delete().eq("id_envio", str(envio_id)).execute()
+        result = supabase.table("envios").delete().eq("id_envio", str(envio_id)).execute()
         return JsonResponse(result.data, safe=False)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
