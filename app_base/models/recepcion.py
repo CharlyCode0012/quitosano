@@ -1,12 +1,13 @@
-
 from dataclasses import dataclass
+from uuid import UUID
+from datetime import date, time
 
 @dataclass
 class Recepcion:
-    id_recepcion: str         # UUID como string
-    id_envio: str             # UUID de envío relacionado
-    fecha_llegada: str        # YYYY-MM-DD
-    hora_llegada: str         # HH:MM
+    id_recepcion: UUID
+    id_envio: UUID
+    fecha_llegada: date
+    hora_llegada: time
     temperatura_llegada: float
     unidad_temperatura: str
     nombre_producto: str
