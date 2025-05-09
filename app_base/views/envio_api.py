@@ -26,7 +26,7 @@ def parse_envio(data: dict) -> Envio:
 
 @require_http_methods(["GET"])
 def listar_envios(request):
-    response = supabase.table("envios").select("*").execute()
+    response = supabase.table("envio").select("*").execute()
     return JsonResponse(response.data, safe=False)
 
 
