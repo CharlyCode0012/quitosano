@@ -1,9 +1,12 @@
-from django.db import models
-import uuid
+from dataclasses import dataclass
+from uuid import UUID
+from datetime import date
 
-class Retroalimentacion(models.Model):
-    folio_compra = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    fecha_compra = models.DateField()
-    cantidad_comprada = models.TextField()
-    comentarios = models.TextField(blank=True)
-    comprador = models.TextField()
+@dataclass
+class Retroalimentacion:
+    id_feedback: UUID
+    id_envio: UUID
+    evaluador: str
+    comentario: str
+    fecha: date
+    calificacion: int
