@@ -1,4 +1,3 @@
-# Archivo apps.py dentro de la aplicación 'app_base'.
 # Define la configuración de la aplicación para que Django la registre correctamente.
 from django.apps import AppConfig
 

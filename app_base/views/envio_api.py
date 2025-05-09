@@ -6,7 +6,7 @@ import json
 import uuid
 from datetime import datetime
 from ..supabase_client import supabase
-from ..models.envio_schema import Envio
+from ..models.envio import Envio
 
 def parse_envio(data: dict) -> Envio:
     return Envio(
