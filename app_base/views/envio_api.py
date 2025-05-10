@@ -35,7 +35,9 @@ def crear_envio(request):
     try:
         data = json.loads(request.body)
         envio = parse_envio(data)
-        result = supabase.table("envios").insert(envio.__dict__).execute()
+        envio_dict = envio.__dict__.copy()
+        envio_dict["id_envio"] = str(envio.id_envio)  # 👈 conversión
+        result = supabase.table("envios").insert(envio_dict).execute()
         return JsonResponse(result.data, safe=False, status=201)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
