@@ -41,7 +41,7 @@ def crear_ambiente(request):
 def actualizar_ambiente(request, transporte_id):
     try:
         data = json.loads(request.body)
-        datos_ambientales['id_transporte'] = transporte_id
+        data['id_transporte'] = transporte_id
 
         datos_ambientales = parse_datos_ambi(data)
         result = supabase.table("monitoreo_temperatura_humedad").update(datos_ambientales.__dict__).eq("id_transporte", str(transporte_id)).execute()
