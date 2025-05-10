@@ -11,8 +11,7 @@ from ..models.envio import Envio
 def parse_envio(data: dict) -> Envio:
     return Envio(
         id_envio=uuid.UUID(data.get('id_envio')) if data.get('id_envio') else uuid.uuid4(),
-        fecha_salida=datetime.strptime(data['fecha_salida'], '%Y-%m-%d').date(),
-        hora_salida=datetime.strptime(data['hora_salida'], '%H:%M:%S').time(),
+        fechaHora_salida=datetime.fromisoformat(data['fechaHora_salida']),
         origen=data['origen'],
         destino=data['destino'],
         temperatura_objetivo=float(data['temperatura_objetivo']),

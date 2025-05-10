@@ -1,12 +1,11 @@
 from dataclasses import dataclass
 from uuid import UUID
-from datetime import date, time
+from datetime import datetime
 
 @dataclass
 class Envio:
     id_envio: UUID
-    fecha_salida: date
-    hora_salida: time
+    fechaHora_salida: datetime
     origen: str
     destino: str
     temperatura_objetivo: float
