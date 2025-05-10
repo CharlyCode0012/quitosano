@@ -36,7 +36,9 @@ def crear_envio(request):
         data = json.loads(request.body)
         envio = parse_envio(data)
         envio_dict = envio.__dict__.copy()
-        envio_dict["id_envio"] = str(envio.id_envio)  # 👈 conversión
+        envio_dict["id_envio"] = str(envio.id_envio)
+        envio_dict["fechaHora_salida"] = envio.fechaHora_salida.isoformat()
+
         result = supabase.table("envios").insert(envio_dict).execute()
         return JsonResponse(result.data, safe=False, status=201)
     except Exception as e:
@@ -49,7 +51,11 @@ def actualizar_envio(request, envio_id):
     try:
         data = json.loads(request.body)
         envio = parse_envio(data)
-        result = supabase.table("envios").update(envio.__dict__).eq("id_envio", str(envio_id)).execute()
+        envio_dict = envio.__dict__.copy()
+        envio_dict["id_envio"] = str(envio.id_envio)
+        envio_dict["fechaHora_salida"] = envio.fechaHora_salida.isoformat()
+
+        result = supabase.table("envios").update(envio_dict).eq("id_envio", str(envio_id)).execute()
         return JsonResponse(result.data, safe=False)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
