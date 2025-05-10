@@ -10,7 +10,7 @@ urlpatterns = [
 
     path('ambiente/', listar_datos_ambientales),
     path('ambiente/crear/', crear_ambiente),
-    path('ambiente/<str:tranposrte_id>/actualizar/', actualizar_ambiente),
+    path('ambiente/<str:transporte_id>/actualizar/', actualizar_ambiente),
     path('ambiente/<str:transporte_id>/elminar/', eliminar_ambiente)
 
 
