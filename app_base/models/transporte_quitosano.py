@@ -1,13 +1,11 @@
 from dataclasses import dataclass
-
+from datetime import datetime
 
 @dataclass
-class DatosAmbientales:
+class TransporteQuitosano:
     id_transporte: str
+    origen: str
+    destino: str
     producto: str
-    temperatura_actual: float
-    temperatura_min: float
-    temperatura_max: float
-    humedad_actual: float
-    humedad_min: float
-    humedad_max: float
+    cantidad_kg: float
+    fecha: datetime

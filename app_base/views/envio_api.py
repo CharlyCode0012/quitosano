@@ -10,62 +10,62 @@ from ..models.envio import Envio
 
 def parse_envio(data: dict) -> Envio:
     return Envio(
-        id_envio=uuid.UUID(data.get('id_envio')) if data.get('id_envio') else uuid.uuid4(),
-        fechaHora_salida=datetime.fromisoformat(data['fechaHora_salida']),
-        origen=data['origen'],
-        destino=data['destino'],
-        temperatura_objetivo=float(data['temperatura_objetivo']),
-        unidad_temperatura=data['unidad_temperatura'],
-        nombre_producto=data['nombre_producto'],
-        cantidad=float(data['cantidad']),
-        unidad=data['unidad'],
-        medio_transporte=data['medio_transporte'],
-        notas=data.get('notas', '')
+        id_envio = uuid.UUID(data.get('id_envio')) if data.get('id_envio') else uuid.uuid4(),
+        fechaHora_salida = datetime.fromisoformat(data['fechaHora_salida']),
+        origen = data['origen'],
+        destino = data['destino'],
+        temperatura_objetivo = float(data['temperatura_objetivo']),
+        unidad_temperatura = data['unidad_temperatura'],
+        nombre_producto = data['nombre_producto'],
+        cantidad = float(data['cantidad']),
+        unidad = data['unidad'],
+        medio_transporte = data['medio_transporte'],
+        notas = data.get('notas', '')
     )
 
 @require_http_methods(["GET"])
 def listar_envios(request):
-    response = supabase.table("envios").select("*").execute()
-    return JsonResponse(response.data, safe=False)
+    response  =  supabase.table("envios").select("*").execute()
+    return JsonResponse(response.data, safe = False)
 
 
 @csrf_exempt
 @require_http_methods(["POST"])
 def crear_envio(request):
     try:
-        data = json.loads(request.body)
-        envio = parse_envio(data)
-        envio_dict = envio.__dict__.copy()
-        envio_dict["id_envio"] = str(envio.id_envio)
-        envio_dict["fechaHora_salida"] = envio.fechaHora_salida.isoformat()
+        data  =  json.loads(request.body)
+        envio  =  parse_envio(data)
+        envio_dict  =  envio.__dict__.copy()
+        envio_dict["id_envio"]  =  str(envio.id_envio)
+        envio_dict["fechaHora_salida"]  =  envio.fechaHora_salida.isoformat()
 
-        result = supabase.table("envios").insert(envio_dict).execute()
-        return JsonResponse(result.data, safe=False, status=201)
+        result  =  supabase.table("envios").insert(envio_dict).execute()
+        return JsonResponse(result.data, safe = False, status = 201)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+        return JsonResponse({'error': str(e)}, status = 400)
 
 
 @csrf_exempt
 @require_http_methods(["PUT"])
 def actualizar_envio(request, envio_id):
     try:
-        data = json.loads(request.body)
-        envio = parse_envio(data)
-        envio_dict = envio.__dict__.copy()
-        envio_dict["id_envio"] = str(envio.id_envio)
-        envio_dict["fechaHora_salida"] = envio.fechaHora_salida.isoformat()
+        data  =  json.loads(request.body)
+        envio  =  parse_envio(data)
+        envio_dict  =  envio.__dict__.copy()
+        envio_dict["id_envio"]  =  str(envio.id_envio)
+        envio_dict["fechaHora_salida"]  =  envio.fechaHora_salida.isoformat()
 
-        result = supabase.table("envios").update(envio_dict).eq("id_envio", str(envio_id)).execute()
-        return JsonResponse(result.data, safe=False)
+        result  =  supabase.table("envios").update(envio_dict).eq("id_envio", str(envio_id)).execute()
+        return JsonResponse(result.data, safe = False)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+        return JsonResponse({'error': str(e)}, status = 400)
 
 
 @csrf_exempt
 @require_http_methods(["DELETE"])
 def eliminar_envio(request, envio_id):
     try:
-        result = supabase.table("envios").delete().eq("id_envio", str(envio_id)).execute()
-        return JsonResponse(result.data, safe=False)
+        result  =  supabase.table("envios").delete().eq("id_envio", str(envio_id)).execute()
+        return JsonResponse(result.data, safe = False)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+        return JsonResponse({'error': str(e)}, status = 400)

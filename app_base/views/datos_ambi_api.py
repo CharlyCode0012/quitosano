@@ -2,7 +2,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 import json
-from datetime import datetime
 from ..supabase_client import supabase
 from ..models import DatosAmbientales
 
@@ -21,7 +20,7 @@ def parse_datos_ambi(data: dict) -> DatosAmbientales:
 @require_http_methods(["GET"])
 def listar_datos_ambientales(request):
     response = supabase.table("monitoreo_temperatura_humedad").select("*").execute()
-    return JsonResponse(response.data, safe=False)
+    return JsonResponse(response.data, safe = False)
 
 @csrf_exempt
 @require_http_methods(["POST"])
@@ -31,9 +30,9 @@ def crear_ambiente(request):
         datos_ambientales = parse_datos_ambi(data)
 
         result = supabase.table("monitoreo_temperatura_humedad").insert(datos_ambientales.__dict__).execute()
-        return JsonResponse(result.data, safe=False, status=201)
+        return JsonResponse(result.data, safe = False, status = 201)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+        return JsonResponse({'error': str(e)}, status = 400)
 
 
 @csrf_exempt
@@ -45,9 +44,9 @@ def actualizar_ambiente(request, transporte_id):
 
         datos_ambientales = parse_datos_ambi(data)
         result = supabase.table("monitoreo_temperatura_humedad").update(datos_ambientales.__dict__).eq("id_transporte", str(transporte_id)).execute()
-        return JsonResponse(result.data, safe=False)
+        return JsonResponse(result.data, safe = False)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+        return JsonResponse({'error': str(e)}, status = 400)
 
 
 @csrf_exempt
@@ -55,6 +54,6 @@ def actualizar_ambiente(request, transporte_id):
 def eliminar_ambiente(request, transporte_id):
     try:
         result = supabase.table("monitoreo_temperatura_humedad").delete().eq("id_transporte", str(transporte_id)).execute()
-        return JsonResponse(result.data, safe=False)
+        return JsonResponse(result.data, safe = False)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+        return JsonResponse({'error': str(e)}, status = 400)
