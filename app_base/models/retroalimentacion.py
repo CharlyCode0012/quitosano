@@ -4,9 +4,8 @@ from datetime import date
 
 @dataclass
 class Retroalimentacion:
-    id_feedback: UUID
-    id_envio: UUID
-    evaluador: str
-    comentario: str
-    fecha: date
-    calificacion: int
+    folio_compra: UUID
+    fecha_compra: date
+    comprador: str
+    comentarios: str
+    cantidad_comprada: str

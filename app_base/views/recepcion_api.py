@@ -11,8 +11,8 @@ def parse_recepcion(data: dict) -> Recepcion:
     return Recepcion(
         id_recepcion = uuid.UUID(data.get('id_recepcion')) if data.get('id_recepcion') else uuid.uuid4(),
         id_envio = uuid.UUID(data.get('id_envio')) if data.get('id_envio') else uuid.uuid4(),
-        fecha_llegada = date(data["fecha_llegada"]),
-        hora_llegada = time(data["hora_llegada"]),
+        fecha_llegada = date.fromisoformat(data["fecha_llegada"]),
+        hora_llegada = time.fromisoformat(data["hora_llegada"]),
         temperatura_llegada = float(data["temperatura_llegada"]),
         unidad_temperatura = data["unidad_temperatura"],
         nombre_producto = data["nombre_producto"],
@@ -21,7 +21,6 @@ def parse_recepcion(data: dict) -> Recepcion:
         observaciones = data["observaciones"],
         condiciones = data["condiciones"],
         recibido_por = data["recibido_por"]
-
     )
 
 @require_http_methods(["GET"])
@@ -67,12 +66,11 @@ def actualizar_recepcion(request, recepcion_id):
         return JsonResponse({"error": e}, status = 400)
 
 @csrf_exempt
-@require_http_methods(["PUT"])
+@require_http_methods(["DELETE"])
 def eliminar_recepcion(request, recepcion_id):
     try:
-       
-
         result = supabase.table("recepciones").delete().eq("id_recepcion", str(recepcion_id)).execute()
         return JsonResponse(result.data, safe = False)
     except Exception as e:
         return JsonResponse({"error": e}, status = 400)
+    
