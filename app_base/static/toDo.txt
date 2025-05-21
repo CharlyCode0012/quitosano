@@ -1,0 +1,2 @@
+Implementar vistas para rutas amigables
+Aquí van contenidos estaticos como archivos .css .sass o .js que son funcionales para la pagina

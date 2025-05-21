@@ -1,0 +1,2 @@
+Falta implementar las vistas que el server responde para el front a determinada URL (end-point), es decir, archivos html 
+con programación dinamica.
