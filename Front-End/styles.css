@@ -1,0 +1,762 @@
+/* ============================================= */
+/* ANIMACIONES REUTILIZABLES */
+/* ============================================= */
+
+/* Animación para elementos que aparecen desplazándose desde abajo */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación para elementos que aparecen desplazándose desde la izquierda */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ============================================= */
+/* ESTILOS GENERALES Y RESET */
+/* ============================================= */
+
+/* Reset básico para eliminar márgenes y paddings por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Modelo de caja más predecible */
+  font-family: 'Segoe UI', sans-serif; /* Fuente principal */
+}
+
+/* Estilos base del cuerpo del documento */
+body {
+  background-color: #CAF0F8; /* Color de fondo principal (azul claro) */
+  color: #03045E; /* Color de texto principal (azul oscuro) */
+}
+
+/* ============================================= */
+/* BARRA DE NAVEGACIÓN */
+/* ============================================= */
+
+/* Contenedor principal de la barra de navegación */
+.navbar {
+  position: fixed; /* Fija la barra en la parte superior */
+  width: 100%;
+  padding: 15px 5%; /* Espaciado interno */
+  background: #0077B6; /* Color de fondo */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+/* Contenedor de los enlaces de navegación */
+.nav-links {
+  display: flex;
+  justify-content: flex-end; /* Alinea los enlaces a la derecha */
+  gap: 30px; /* Espacio entre enlaces */
+}
+
+/* Estilos para los enlaces de navegación */
+.nav-links a {
+  text-decoration: none;
+  color: #CAF0F8; /* Color de texto */
+  font-weight: 500;
+  transition: color 0.3s; /* Transición suave para el hover */
+}
+
+/* Efecto hover para los enlaces */
+.nav-links a:hover {
+  color: #90E0EF; /* Color más claro al pasar el mouse */
+}
+
+/* ============================================= */
+/* BOTÓN DE LOGIN */
+/* ============================================= */
+
+/* Estilos base del botón de login */
+.login-btn {
+  background: #0077B6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: auto; /* Empuja el botón a la derecha */
+  transition: all 0.3s; /* Transición para efectos hover */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre icono y texto */
+}
+
+/* Efecto hover para el botón */
+.login-btn:hover {
+  background: #03045E; /* Color más oscuro */
+  transform: translateY(-2px); /* Efecto de levitación */
+}
+
+/* Estilo para el icono dentro del botón */
+.login-btn i {
+  font-size: 1.1rem;
+}
+
+/* ============================================= */
+/* MODAL DE LOGIN */
+/* ============================================= */
+
+/* Fondo del modal (oscuro semitransparente) */
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Por encima de la barra de navegación */
+  opacity: 0;
+  visibility: hidden; /* Oculto por defecto */
+  transition: all 0.3s; /* Transición para aparecer/desaparecer */
+}
+
+/* Estado activo del modal */
+.login-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Contenido principal del modal */
+.login-content {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px; /* Ancho máximo */
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra pronunciada */
+  animation: modalFadeIn 0.4s ease-out; /* Animación de entrada */
+}
+
+/* Animación específica para el modal */
+@keyframes modalFadeIn {
+  from {
+      transform: translateY(-50px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Botón para cerrar el modal */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0077B6; /* Color que combina con el tema */
+}
+
+/* ============================================= */
+/* FORMULARIO DE LOGIN */
+/* ============================================= */
+
+/* Grupos de campos del formulario */
+.login-form .form-group {
+  margin-bottom: 20px; /* Espacio entre campos */
+}
+
+/* Etiquetas del formulario */
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #03045E;
+  font-weight: 500;
+}
+
+/* Campos de entrada del formulario */
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd; /* Borde sutil */
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Botón de submit del formulario */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #00B4D8; /* Color acento */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s; /* Transición para hover */
+}
+
+/* Efecto hover para el botón */
+.submit-btn:hover {
+  background: #0077B6; /* Color más oscuro */
+}
+
+/* Estilos específicos para campos de contraseña */
+.login-form input[type="password"] {
+  -webkit-text-security: disc; /* Estilo de puntos para contraseña */
+  text-security: disc;
+  color: #0077B6; /* Color del texto */
+}
+
+/* Estilos para campos de texto */
+.login-form input[type="text"] {
+  color: #0077B6; /* Color consistente */
+}
+
+/* ============================================= */
+/* DISEÑO RESPONSIVE - VISTA MÓVIL */
+/* ============================================= */
+
+@media (max-width: 768px) {
+  /* Ajustes para el botón de login en móvil */
+  .login-btn {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+  }
+  
+  /* Ajustes para el contenido del modal en móvil */
+  .login-content {
+      padding: 30px 20px;
+      margin: 0 20px; /* Margen lateral en pantallas pequeñas */
+  }
+}
+
+/* ============================================= */
+/* SECCIÓN HERO (PORTADA PRINCIPAL) */
+/* ============================================= */
+
+.hero {
+  height: 70vh; /* 70% del viewport height */
+  /* Fondo con gradiente superpuesto a una imagen */
+  background: linear-gradient(rgba(0, 180, 216, 0.9), rgba(0, 119, 182, 0.9)),
+              url('https://images.unsplash.com/photo-1620207418302-439b387441b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover; /* Cubre todo el espacio disponible */
+  background-position: center; /* Centra la imagen */
+  display: flex;
+  align-items: center; /* Centra verticalmente el contenido */
+  padding: 0 5%; /* Padding lateral */
+  color: white; /* Texto blanco para contraste */
+}
+
+/* Contenedor del contenido hero */
+.hero-content {
+  max-width: 600px; /* Ancho máximo del texto */
+  animation: slideInLeft 1s ease-out; /* Animación de entrada */
+}
+
+/* Título principal */
+.hero h1 {
+  font-size: 2.8rem; /* Tamaño grande */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* ============================================= */
+/* SECCIÓN "QUIÉNES SOMOS" */
+/* ============================================= */
+
+.about {
+  padding: 100px 5%; /* Espaciado generoso */
+  background-color: white; /* Fondo blanco para contraste */
+}
+
+/* Contenedor flexible para alinear texto e imagen */
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 50px; /* Espacio entre columnas */
+  max-width: 1200px; /* Ancho máximo */
+  margin: 0 auto; /* Centrado */
+}
+
+/* Columna de texto */
+.about-text {
+  flex: 1; /* Ocupa espacio disponible */
+  padding-right: 30px; /* Espacio a la derecha */
+}
+
+/* Columna de imagen */
+.about-image {
+  flex: 1; /* Mismo ancho que el texto */
+}
+
+/* Estilos para la imagen */
+.about-image img {
+  width: 100%; /* Ancho completo */
+  border-radius: 10px; /* Esquinas redondeadas */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Título de sección */
+.about h2 {
+  color: #03045E; /* Color oscuro */
+  margin-bottom: 25px; /* Espacio inferior */
+  font-size: 2.2rem; /* Tamaño grande */
+}
+
+/* Párrafos */
+.about p {
+  margin-bottom: 20px; /* Espacio entre párrafos */
+  line-height: 1.6; /* Interlineado cómodo */
+  color: #333; /* Color de texto */
+}
+
+/* Lista de características */
+.about-features {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  list-style: none; /* Elimina viñetas por defecto */
+}
+
+/* Items de la lista */
+.about-features li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center; /* Alinea icono con texto */
+  color: #0077B6; /* Color azul */
+  font-weight: 500; /* Peso de fuente */
+}
+
+/* Iconos de la lista */
+.about-features i {
+  margin-right: 10px; /* Espacio a la derecha del icono */
+  color: #00B4D8; /* Color acento */
+  font-size: 1.2rem; /* Tamaño del icono */
+}
+
+/* ============================================= */
+/* DISEÑO RESPONSIVE - SECCIÓN QUIÉNES SOMOS */
+/* ============================================= */
+
+@media (max-width: 768px) {
+  /* Cambia a disposición vertical en móvil */
+  .about-content {
+      flex-direction: column;
+  }
+  
+  /* Elimina padding derecho en móvil */
+  .about-text {
+      padding-right: 0;
+      margin-bottom: 40px; /* Espacio inferior aumentado */
+  }
+  
+  /* Centra el título en móvil */
+  .about h2 {
+      text-align: center;
+  }
+}
+
+/* ============================================= */
+/* SECCIÓN DE SERVICIOS */
+/* ============================================= */
+
+.services {
+  padding: 100px 5%; /* Espaciado generoso */
+  background: #90E0EF; /* Fondo azul claro */
+}
+
+/* Títulos de sección (compartido con otras secciones) */
+.services h2, .process h2, .contact h2 {
+  color: #03045E; /* Color oscuro */
+  margin-bottom: 40px; /* Espacio inferior */
+  text-align: center; /* Centrado */
+}
+
+/* Grid de tarjetas de servicios */
+.services-grid {
+  display: grid;
+  /* Columnas responsivas que se ajustan al ancho */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px; /* Espacio entre tarjetas */
+  margin-top: 50px; /* Espacio superior */
+}
+
+/* Tarjetas individuales de servicio */
+.service-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Disposición vertical */
+  background: #CAF0F8; /* Fondo claro */
+  padding: 30px; /* Espaciado interno */
+  border-radius: 10px; /* Esquinas redondeadas */
+  box-shadow: 0 5px 25px rgba(0,0,0,0.1); /* Sombra sutil */
+  transition: transform 0.3s; /* Transición para hover */
+  opacity: 0; /* Inicialmente invisible para animación */
+  transform: translateY(20px); /* Posición inicial para animación */
+  border-top: 4px solid #00B4D8; /* Borde superior acentuado */
+}
+
+/* Estado visible para animación */
+.service-card.visible {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Efecto hover para las tarjetas */
+.service-card:hover {
+  transform: translateY(-10px); /* Efecto de levitación */
+  box-shadow: 0 15px 30px rgba(0, 180, 216, 0.2); /* Sombra más pronunciada */
+}
+
+/* Iconos de servicios */
+.service-icon {
+  font-size: 2.5rem; /* Tamaño grande */
+  color: #0077B6; /* Color azul */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* ============================================= */
+/* SECCIÓN VISIÓN Y MISIÓN */
+/* ============================================= */
+
+.vision-mision {
+  padding: 100px 5%; /* Espaciado generoso */
+  background-color: #03045E; /* Fondo azul oscuro */
+  color: white; /* Texto blanco */
+}
+
+/* Contenedor flexible para visión y misión */
+.vm-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Espacio entre bloques */
+  max-width: 1200px; /* Ancho máximo */
+  margin: 0 auto; /* Centrado */
+}
+
+/* Bloques individuales (visión y misión) */
+.vm-block {
+  flex: 1; /* Ocupa espacio disponible */
+  background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque */
+  border-radius: 15px; /* Esquinas redondeadas */
+  padding: 40px 30px; /* Espaciado interno */
+  min-width: 300px; /* Ancho mínimo */
+  opacity: 0; /* Inicialmente invisible para animación */
+  transform: translateY(30px); /* Posición inicial para animación */
+  transition: all 0.6s ease-out; /* Transición suave */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
+}
+
+/* Estado visible para animación */
+.vm-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cabecera de cada bloque (icono + título) */
+.vm-header {
+  display: flex;
+  align-items: center; /* Alinea icono con texto */
+  margin-bottom: 25px; /* Espacio inferior */
+}
+
+/* Iconos en la cabecera */
+.vm-header i {
+  font-size: 2rem; /* Tamaño grande */
+  margin-right: 15px; /* Espacio a la derecha */
+  color: #CAF0F8; /* Color azul claro */
+}
+
+/* Títulos de visión/misión */
+.vm-header h3 {
+  font-size: 1.8rem; /* Tamaño grande */
+  color: white; /* Texto blanco */
+}
+
+/* Contenido de texto */
+.vm-content p {
+  line-height: 1.7; /* Interlineado generoso */
+  font-size: 1.1rem; /* Tamaño de fuente aumentado */
+}
+
+/* Retrasos para animaciones secuenciales */
+.vision {
+  transition-delay: 0.2s; /* Visión aparece primero */
+}
+
+.mision {
+  transition-delay: 0.4s; /* Misión aparece después */
+}
+
+/* ============================================= */
+/* DISEÑO RESPONSIVE - VISIÓN/MISIÓN */
+/* ============================================= */
+
+@media (max-width: 768px) {
+  /* Cambia a disposición vertical en móvil */
+  .vm-container {
+      flex-direction: column;
+      gap: 30px; /* Espacio reducido */
+  }
+  
+  /* Elimina ancho mínimo en móvil */
+  .vm-block {
+      min-width: auto;
+  }
+}
+
+/* ============================================= */
+/* SECCIÓN DE PROCESO */
+/* ============================================= */
+
+.process {
+  padding: 100px 5%; /* Espaciado generoso */
+  background: #00B4D8; /* Fondo azul acento */
+  color: #53595b; /* Color de texto */
+}
+
+/* Contenedor de pasos del proceso */
+.process-steps {
+  display: flex;
+  justify-content: space-between; /* Distribuye el espacio */
+  flex-wrap: wrap; /* Permite envolver en móvil */
+  gap: 30px; /* Espacio entre pasos */
+  margin-top: 50px; /* Espacio superior */
+}
+
+/* Pasos individuales del proceso */
+.process-step {
+  flex: 1; /* Ocupa espacio disponible */
+  min-width: 250px; /* Ancho mínimo */
+  text-align: center; /* Texto centrado */
+  padding: 30px; /* Espaciado interno */
+  background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+  backdrop-filter: blur(5px); /* Efecto de desenfoque */
+  border-radius: 10px; /* Esquinas redondeadas */
+  opacity: 0; /* Inicialmente invisible para animación */
+  transform: translateY(20px); /* Posición inicial para animación */
+  border: 3px solid #00AACC; /* Borde acentuado */
+  transition: all 0.6s ease-out; /* Transición suave */
+}
+
+/* Estado visible para animación */
+.process-step.visible {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Títulos de los pasos */
+.process-step h3 {
+  color: #53595b; /* Color de texto */
+}
+
+/* ============================================= */
+/* SECCIÓN DE CONTACTO */
+/* ============================================= */
+
+.contact {
+  padding: 100px 5%; /* Espaciado generoso */
+  background: #03045E; /* Fondo azul oscuro */
+  color: white; /* Texto blanco */
+}
+
+/* Formulario de contacto */
+.contact-form {
+  max-width: 600px; /* Ancho máximo */
+  margin: 0 auto; /* Centrado */
+}
+
+/* Grupos de campos del formulario */
+.form-group {
+  margin-bottom: 20px; /* Espacio entre campos */
+}
+
+/* Etiquetas del formulario */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #90E0EF; /* Color azul claro */
+}
+
+/* Campos de entrada y textarea */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+  color: white; /* Texto blanco */
+}
+
+/* Placeholders de los campos */
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6); /* Placeholder semitransparente */
+}
+
+/* Botones generales (reutilizable) */
+button {
+  background: #00B4D8; /* Color acento */
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s; /* Transición para hover */
+  font-weight: bold;
+  display: block;
+  margin: 0 auto; /* Centrado */
+}
+
+/* Efecto hover para botones */
+button:hover {
+  background: #0077B6; /* Color más oscuro */
+}
+
+/* ============================================= */
+/* SECCIÓN DE REDES SOCIALES */
+/* ============================================= */
+
+.social-media {
+    background-color: #0077B6;
+    padding: 60px 5%;
+    text-align: center;
+    border-top: 2px solid #00B4D8;
+}
+
+.social-media h2 {
+    color: #90E0EF;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    text-decoration: none;
+    color: #CAF0F8;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-link i {
+    font-size: 3rem;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+    color: #00B4D8;
+}
+
+.social-link:hover i {
+    transform: translateY(-5px);
+}
+
+.social-link span {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Responsive Design para Redes Sociales */
+@media (max-width: 768px) {
+    .social-icons {
+        gap: 30px;
+    }
+    
+    .social-link i {
+        font-size: 2.5rem;
+    }
+    
+    .social-link span {
+        font-size: 1rem;
+    }
+        .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .social-links {
+        gap: 30px;
+    }
+}
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-icons, .email-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.email-info {
+    text-align: center;
+    color: #CAF0F8;
+}
+
+.email-info h2 {
+    color: #90E0EF;
+    margin-bottom: 20px;
+}
+
+.email-address {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #00B4D8;
+    margin-top: 10px;
+    word-break: break-all;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .social-links {
+        gap: 30px;
+    }
+}
+
+/* ============================================= */
+/* DISEÑO RESPONSIVE GENERAL */
+/* ============================================= */
+
+@media (max-width: 768px) {
+  /* Ajustes para el título hero en móvil */
+  .hero h1 {
+      font-size: 2rem; /* Tamaño reducido */
+  }
+  
+  /* Ajustes para los enlaces de navegación en móvil */
+  .nav-links {
+      justify-content: center; /* Centrado */
+      gap: 15px; /* Espacio reducido */
+  }
+  
+  /* Cambia a disposición vertical para pasos del proceso */
+  .process-steps {
+      flex-direction: column;
+  }
+}

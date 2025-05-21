@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos básicos del documento -->
+    <meta charset="UTF-8">
+    <!-- Configuración para diseño responsivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la página del área privada -->
+    <title>Quitosanova - Área Privada</title>
+    <!-- Enlaces a hojas de estilo -->
+    <link rel="stylesheet" href="styles.css"> <!-- Estilos generales -->
+    <link rel="stylesheet" href="privado.css"> <!-- Estilos específicos del área privada -->
+    <!-- Biblioteca de iconos Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de navegación del área privada -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <!-- Enlaces de navegación internos -->
+            <a href="#dashboard">Dashboard</a>
+            <a href="#transporte">Transporte</a>
+            <a href="#temperatura-humedad">Temperatura/Humedad</a>
+            <a href="#reportes">Reportes</a>
+        </div>
+        <!-- Botón para cerrar sesión -->
+        <button class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+        </button>
+    </nav>
+
+    <!-- Sección Hero (portada del dashboard) -->
+    <section class="hero" id="dashboard">
+        <div class="hero-content">
+            <h1>Bienvenido al Área Privada</h1>
+            <p>Gestión integral de producción y ventas</p>
+        </div>
+    </section>
+
+<!-- Sección de Transporte -->
+<section class="transport-section" id="transporte">
+    <div class="section-header">
+        <h2>Transporte de Quitosano</h2>
+        <p>Control y registro para transportes de quitosano para mejorar la organización de destinos y cargas.</p>
+    </div>
+    
+    <!-- Tabla de registros de transporte -->
+    <div class="transport-table">
+<table id="transport-table">
+    <thead>
+        <tr>
+            <th>ID de Transporte</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Producto</th>
+            <th>Cantidad (kg)</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody id="transport-data">
+        <!-- Los datos se cargarán aquí dinámicamente -->
+        <tr>
+            <td colspan="7">Cargando datos de transporte...</td>
+        </tr>
+    </tbody>
+</table>
+<!-- Formularios de creación y edición -->
+<div class="transport-forms">
+    <!-- Formulario de creación -->
+    <form id="create-transport-form" class="report-form">
+        <h3>Nuevo Transporte</h3>
+    <!-- Campo oculto para ID si es necesario -->
+    <input type="hidden" id="id_transporte">
+    
+    <div class="form-row">
+        <div class="form-group">
+            <label for="origin">Origen (en inglés):</label>
+            <input type="text" id="origin" required>
+        </div>
+        <div class="form-group">
+            <label for="destino">Destino:</label>
+            <input type="text" id="destino" required>
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group">
+            <label for="producto">Producto:</label>
+            <input type="text" id="producto" value="Quitosano" required>
+        </div>
+        <div class="form-group">
+            <label for="cantidad_kg">Cantidad (kg):</label>
+            <input type="number" id="cantidad_kg" step="0.1" required>
+        </div>
+    </div>
+
+
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Crear</button>
+        </div>
+    </form>
+
+    <!-- Formulario de edición (oculto inicialmente) -->
+    <form id="edit-transport-form" class="report-form" style="display: none;">
+        <h3>Editar Transporte</h3>
+        <input type="hidden" id="edit-id">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="edit-origen">Origen:</label>
+                <input type="text" id="edit-origen" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-destino">Destino:</label>
+                <input type="text" id="edit-destino" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="edit-cantidad">Cantidad (kg):</label>
+                <input type="number" id="edit-cantidad" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-estado">Estado:</label>
+                <select id="edit-estado" required>
+                    <option value="En proceso">En proceso</option>
+                    <option value="En tránsito">En tránsito</option>
+                    <option value="Entregado">Entregado</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Actualizar</button>
+            <button type="button" class="reset-btn" onclick="cancelEdit()">Cancelar</button>
+        </div>
+    </form>
+</div>
+    </div>
+</section>
+
+    <!-- Sección de Monitoreo de Temperatura/Humedad -->
+    <section class="temp-hum-section" id="temperatura-humedad">
+        <div class="section-header">
+            <h2>Monitoreo de Temperatura/Humedad</h2>
+            <p>Control y registro de las condiciones ambientales para garantizar la calidad del quitosano durante el transporte y almacenamiento.</p>
+        </div>
+
+        <!-- Tabla de registros de condiciones ambientales -->
+<!-- En la sección de temperatura/humedad -->
+<div class="temp-hum-table">
+<table>
+    <thead>
+        <tr>
+            <th>ID Transporte</th>
+            <th>Producto</th>
+            <th>Temperatura Actual</th>
+            <th>Temp. Mín</th>
+            <th>Temp. Máx</th>
+            <th>Humedad Actual</th>
+            <th>Hum. Mín</th>
+            <th>Hum. Máx</th>
+        </tr>
+    </thead>
+    <tbody id="temp-hum-data">
+        <!-- Datos dinámicos -->
+    </tbody>
+</table>
+<!-- Añadir después de la tabla de temperatura -->
+<div class="transport-forms">
+    <!-- Formulario Creación -->
+<!-- Formulario de creación completo -->
+<form id="create-ambiente-form" class="report-form">
+    <h3>Nuevo Registro Ambiental</h3>
+    
+    <!-- ID Transporte -->
+    <div class="form-row">
+        <div class="form-group">
+            <label>ID Transporte</label>
+            <input type="text" id="create-id-transporte" required>
+        </div>
+    </div>
+
+    <!-- Temperatura -->
+    <div class="form-row">
+        <div class="form-group">
+            <label>Temperatura Actual (°C)</label>
+            <input type="number" id="create-temp-actual" step="0.1" required>
+        </div>
+        <div class="form-group">
+            <label>Temperatura Mínima (°C)</label>
+            <input type="number" id="create-temp-min" step="0.1" required>
+        </div>
+        <div class="form-group">
+            <label>Temperatura Máxima (°C)</label>
+            <input type="number" id="create-temp-max" step="0.1" required>
+        </div>
+    </div>
+
+    <!-- Humedad -->
+    <div class="form-row">
+        <div class="form-group">
+            <label>Humedad Actual (%)</label>
+            <input type="number" id="create-hum-actual" step="0.1" required>
+        </div>
+        <div class="form-group">
+            <label>Humedad Mínima (%)</label>
+            <input type="number" id="create-hum-min" step="0.1" required>
+        </div>
+        <div class="form-group">
+            <label>Humedad Máxima (%)</label>
+            <input type="number" id="create-hum-max" step="0.1" required>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="submit-btn">Crear</button>
+    </div>
+</form>
+
+    <!-- Formulario Edición -->
+    <form id="edit-ambiente-form" class="report-form" style="display: none;">
+        <h3>Editar Registro</h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Temperatura Actual</label>
+                <input type="number" id="edit-temp-actual" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label>Temperatura Mínima</label>
+                <input type="number" id="edit-temp-min" step="0.1" required>
+            </div>
+        </div>
+        
+        <!-- Agregar campos para humedad -->
+        
+        <div class="form-actions">
+            <button type="submit" class="submit-btn">Guardar</button>
+            <button type="button" class="reset-btn" id="cancel-edit">Cancelar</button>
+        </div>
+    </form>
+</div>
+</div>
+
+    </section>
+
+    <!-- Sección de Generación de Reportes -->
+    <section class="reports-section" id="reportes">
+        <div class="section-header">
+            <h2>Generar Reporte</h2>
+            <p>Complete el siguiente formulario para generar un reporte sobre las condiciones del quitosano durante el transporte</p>
+        </div>
+
+        <!-- Formulario para generar reportes -->
+        <form class="report-form">
+            <!-- Primera fila de campos -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="puesto">Puesto:</label>
+                    <input type="text" id="puesto" required>
+                </div>
+            </div>
+
+            <!-- Campo de selección de condiciones -->
+            <div class="form-group">
+                <label for="condiciones">Condiciones del quitosano:</label>
+                <select id="condiciones" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="optima">Óptimas</option>
+                    <option value="aceptable">Aceptables</option>
+                    <option value="degradado">Degradado</option>
+                    <option value="critico">Crítico</option>
+                </select>
+            </div>
+
+            <!-- Segunda fila de campos -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="transporte-id">ID de Transporte:</label>
+                    <input type="text" id="transporte-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="temperatura">Temperatura del producto (°C):</label>
+                    <input type="number" id="temperatura" step="0.1" required>
+                </div>
+            </div>
+
+            <!-- Tercera fila de campos -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cantidad">Cantidad (kg):</label>
+                    <input type="number" id="cantidad" required>
+                </div>
+                <div class="form-group">
+                    <label for="destino">Destino:</label>
+                    <input type="text" id="destino" required>
+                </div>
+            </div>
+
+            <!-- Campo de texto para observaciones -->
+            <div class="form-group">
+                <label for="observaciones">Observaciones adicionales:</label>
+                <textarea id="observaciones" rows="3"></textarea>
+            </div>
+
+            <!-- Botones de acción del formulario -->
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">Generar Reporte</button>
+                <button type="reset" class="reset-btn">Limpiar Formulario</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="script.js"></script>
+    <script src="reportForm.js"></script>
+    <script src="api-transporte.js"></script>
+    <script src="api-temperatura.js"></script>
+</body>
+</html>

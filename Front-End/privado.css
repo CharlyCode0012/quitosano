@@ -1,0 +1,455 @@
+/* ============================================= */
+/* ESTILOS DEL BOTÓN DE CERRAR SESIÓN */
+/* ============================================= */
+
+/* Estilo base del botón de logout */
+.logout-btn {
+    background: #0077B6; /* Color azul corporativo */
+    color: white; /* Texto blanco para contraste */
+    border: none; /* Sin bordes */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 1rem; /* Tamaño de fuente estándar */
+    margin-left: auto; /* Alineación a la derecha */
+    transition: all 0.3s; /* Transición suave para efectos hover */
+    display: flex; /* Disposición flexible para alinear icono y texto */
+    align-items: center; /* Centrado vertical */
+    gap: 8px; /* Espacio entre icono y texto */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+/* Efecto hover del botón */
+.logout-btn:hover {
+    background: #03045E; /* Color más oscuro al interactuar */
+    transform: translateY(-2px); /* Efecto de levitación */
+}
+
+/* Estilo específico para el icono dentro del botón */
+.logout-btn i {
+    font-size: 1.1rem; /* Tamaño ligeramente mayor que el texto */
+}
+
+/* ============================================= */
+/* ESTILOS PARA LA SECCIÓN DE TRANSPORTE */
+/* ============================================= */
+
+/* Contenedor principal de la sección */
+.transport-section {
+    padding: 80px 5%; /* Espaciado generoso */
+    background-color: #CAF0F8; /* Fondo azul claro */
+}
+
+/* Cabecera de sección (comparte estilos con otras secciones) */
+.section-header {
+    max-width: 1200px; /* Ancho máximo para mejor legibilidad */
+    margin: 0 auto 40px; /* Centrado con margen inferior */
+    text-align: center; /* Texto centrado */
+}
+
+/* Título de sección */
+.section-header h2 {
+    color: #03045E; /* Color azul oscuro corporativo */
+    font-size: 2.5rem; /* Tamaño grande para jerarquía */
+    margin-bottom: 20px; /* Espacio después del título */
+}
+
+/* Párrafo descriptivo de la sección */
+.section-header p {
+    color: #0077B6; /* Color azul corporativo */
+    font-size: 1.2rem; /* Tamaño aumentado para legibilidad */
+    line-height: 1.6; /* Interlineado cómodo */
+    max-width: 800px; /* Ancho óptimo para lectura */
+    margin: 0 auto; /* Centrado */
+}
+
+/* Tabla de transporte - contenedor */
+.transport-table {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 40px auto 0; /* Centrado con margen superior */
+    overflow-x: auto; /* Scroll horizontal en móviles */
+    background: white; /* Fondo blanco para contraste */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.1); /* Sombra sutil */
+}
+
+/* Estructura de la tabla */
+.transport-table table {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    border-collapse: collapse; /* Bordes unificados */
+}
+
+/* Estilo de las celdas de encabezado */
+.transport-table th {
+    background-color: #0077B6; /* Fondo azul corporativo */
+    color: white; /* Texto blanco */
+    padding: 15px; /* Espaciado interno */
+    text-align: left; /* Alineación izquierda */
+}
+
+/* Estilo de las celdas de datos */
+.transport-table td {
+    padding: 12px 15px; /* Espaciado interno */
+    border-bottom: 1px solid #e0e0e0; /* Borde sutil entre filas */
+    color: #03045E; /* Color de texto oscuro */
+}
+
+/* Efecto hover para filas */
+.transport-table tr:hover {
+    background-color: #f5f5f5; /* Fondo gris claro al interactuar */
+}
+
+/* ============================================= */
+/* ESTILOS PARA LA SECCIÓN DE TEMPERATURA/HUMEDAD */
+/* ============================================= */
+
+/* Contenedor principal */
+.temp-hum-section {
+    padding: 80px 5%; /* Espaciado generoso */
+    background-color: #00B4D8; /* Fondo azul turquesa */
+    color: white; /* Texto blanco para contraste */
+}
+
+/* Tabla de condiciones - contenedor */
+.temp-hum-table {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 40px auto 0; /* Centrado con margen superior */
+    overflow-x: auto; /* Scroll horizontal en móviles */
+    background: white; /* Fondo blanco para contraste */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estructura de la tabla */
+.temp-hum-table table {
+    width: 100%; /* Ocupa todo el ancho */
+    border-collapse: collapse; /* Bordes unificados */
+}
+
+/* Estilo de las celdas de encabezado */
+.temp-hum-table th {
+    background-color: #03045E; /* Fondo azul oscuro */
+    color: white; /* Texto blanco */
+    padding: 15px; /* Espaciado interno */
+    text-align: left; /* Alineación izquierda */
+}
+
+/* Estilo de las celdas de datos */
+.temp-hum-table td {
+    padding: 12px 15px; /* Espaciado interno */
+    border-bottom: 1px solid #e0e0e0; /* Borde sutil entre filas */
+    color: #03045E; /* Color de texto oscuro */
+}
+
+/* Efecto hover para filas */
+.temp-hum-table tr:hover {
+    background-color: #f5f5f5; /* Fondo gris claro al interactuar */
+}
+
+/* Clases para estados especiales (opcional) */
+.temp-hum-table .warning {
+    color: #FFC107; /* Color amarillo para advertencias */
+    font-weight: bold; /* Texto en negrita */
+}
+
+.temp-hum-table .danger {
+    color: #DC3545; /* Color rojo para peligro */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* ============================================= */
+/* ESTILOS PARA LA SECCIÓN DE REPORTES */
+/* ============================================= */
+
+/* Contenedor principal */
+.reports-section {
+    padding: 80px 5%; /* Espaciado generoso */
+    background-color: #CAF0F8; /* Fondo azul claro */
+}
+
+/* Formulario de reportes */
+.report-form {
+    max-width: 800px; /* Ancho máximo */
+    margin: 40px auto 0; /* Centrado con margen superior */
+    background: white; /* Fondo blanco */
+    padding: 30px; /* Espaciado interno */
+    border-radius: 10px; /* Esquinas redondeadas */
+    box-shadow: 0 5px 15px rgba(0, 119, 182, 0.1); /* Sombra sutil */
+}
+
+/* Filas de campos del formulario */
+.report-form .form-row {
+    display: flex; /* Disposición flexible */
+    gap: 20px; /* Espacio entre campos */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Grupos de campos individuales */
+.report-form .form-group {
+    flex: 1; /* Ocupa espacio disponible */
+    margin-bottom: 15px; /* Margen inferior */
+}
+
+/* Etiquetas de los campos */
+.report-form label {
+    display: block; /* Ocupa toda la línea */
+    margin-bottom: 8px; /* Espacio debajo */
+    color: #03045E; /* Color oscuro */
+    font-weight: 500; /* Peso medio */
+}
+
+/* Campos de entrada, select y textarea */
+.report-form input,
+.report-form select,
+.report-form textarea {
+    width: 100%; /* Ancho completo */
+    padding: 12px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 5px; /* Esquinas redondeadas */
+    font-size: 1rem; /* Tamaño estándar */
+    color: #03045E !important; /* Color de texto oscuro */
+}
+
+/* Estilo específico para textarea */
+.report-form textarea {
+    min-height: 100px; /* Altura mínima */
+    resize: vertical; /* Permite redimensionar solo vertical */
+}
+
+/* Estilo personalizado para select */
+.report-form select {
+    appearance: none; /* Elimina estilos por defecto */
+    /* Flecha personalizada con SVG */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300747B'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+}
+
+/* Contenedor de botones del formulario */
+.form-actions {
+    display: flex; /* Disposición flexible */
+    justify-content: flex-end; /* Alineación a la derecha */
+    gap: 15px; /* Espacio entre botones */
+    margin-top: 30px; /* Margen superior */
+}
+
+/* Botón de enviar */
+.submit-btn {
+    background: #0077B6; /* Color azul corporativo */
+    color: white; /* Texto blanco */
+    padding: 12px 30px; /* Espaciado interno */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor */
+    font-weight: bold; /* Texto en negrita */
+    transition: background 0.3s; /* Transición suave */
+}
+
+/* Efecto hover para botón de enviar */
+.submit-btn:hover {
+    background: #03045E; /* Color más oscuro */
+}
+
+/* Botón de reset */
+.reset-btn {
+    background: #e0e0e0; /* Fondo gris claro */
+    color: #333; /* Texto oscuro */
+    padding: 12px 30px; /* Espaciado interno */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor */
+    font-weight: bold; /* Texto en negrita */
+    transition: background 0.3s; /* Transición suave */
+}
+
+/* Efecto hover para botón de reset */
+.reset-btn:hover {
+    background: #bdbdbd; /* Fondo gris más oscuro */
+}
+
+/* ============================================= */
+/* MEDIA QUERIES PARA DISEÑO RESPONSIVE */
+/* ============================================= */
+
+@media (max-width: 768px) {
+    /* Ajustes para el botón de logout */
+    .logout-btn {
+        padding: 8px 15px; /* Espaciado reducido */
+        font-size: 0.9rem; /* Tamaño de fuente menor */
+    }
+    
+    /* Ajustes para títulos y párrafos */
+    .section-header h2 {
+        font-size: 2rem; /* Tamaño reducido */
+    }
+    
+    .section-header p {
+        font-size: 1rem; /* Tamaño estándar */
+    }
+    
+    /* Ajustes para tablas */
+    .transport-table,
+    .temp-hum-table {
+        padding: 10px; /* Espaciado reducido */
+    }
+    
+    .transport-table th, 
+    .transport-table td,
+    .temp-hum-table th, 
+    .temp-hum-table td {
+        padding: 10px; /* Espaciado reducido */
+        font-size: 0.9rem; /* Tamaño de fuente menor */
+    }
+    
+    /* Ajustes para formulario */
+    .report-form .form-row {
+        flex-direction: column; /* Apila campos verticalmente */
+        gap: 0; /* Elimina espacio entre campos */
+    }
+    
+    .report-form {
+        padding: 20px; /* Espaciado reducido */
+    }
+    
+    .form-actions {
+        flex-direction: column; /* Apila botones */
+    }
+    
+    .submit-btn,
+    .reset-btn {
+        width: 100%; /* Ancho completo */
+    }
+}
+/* ============================================= */
+/* ESTILOS PARA FORMULARIOS DE TRANSPORTE */
+/* ============================================= */
+.transport-forms {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+/* Botón de edición */
+.edit-btn {
+    background: #0077B6;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.edit-btn:hover {
+    background: #03045E;
+    transform: translateY(-2px);
+}
+
+.edit-btn i {
+    font-size: 0.9rem;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .transport-forms {
+        grid-template-columns: 1fr;
+    }
+    
+    .edit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+/* Añadir al final del archivo 
+.temp-hum-table th:nth-child(3),
+.temp-hum-table td:nth-child(3),
+.temp-hum-table th:nth-child(6),
+.temp-hum-table td:nth-child(6) {
+    background-color: #f8f9fa; /* Fondo diferenciado */
+
+
+.warning {
+    background-color: #fff3cd !important; /* Color de advertencia */
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+/* Ajustar ancho de tabla */
+.temp-hum-table table {
+    min-width: 1000px;
+}
+/* Añade esto en privado.css */
+.temp-hum-table th:nth-child(3), 
+.temp-hum-table th:nth-child(6) {
+    min-width: 120px; /* Ancho mínimo para columnas importantes */
+}
+
+.temp-hum-table td:nth-child(3),
+.temp-hum-table td:nth-child(6) {
+    font-weight: 600; /* Destacar valores actuales */
+}
+
+.temp-hum-table td {
+    white-space: nowrap; /* Evitar saltos de línea */
+    padding: 12px 15px !important;
+}
+/* Añadir esta regla */
+.temp-hum-table th {
+    background-color: #03045E !important; /* Azul corporativo */
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+/* Mantener estilos para celdas de datos */
+.temp-hum-table td:nth-child(3),
+.temp-hum-table td:nth-child(6) {
+    background-color: #f8f9fa; /* Mantener fondo diferenciado solo en celdas */
+}
+/* Estilos para formularios de ambiente */
+#edit-ambiente-form {
+    margin-top: 20px;
+    background: #f8f9fa;
+    border: 1px solid #0077B6;
+}
+
+.edit-btn {
+    background: none;
+    color: #0077B6;
+    border: 1px solid #0077B6;
+    padding: 5px 10px;
+}
+
+.edit-btn:hover {
+    background: #0077B6;
+    color: white;
+}
+/* Formulario de edición */
+#edit-ambiente-form {
+    margin-top: 2rem;
+    border: 2px solid #0077B6;
+    border-radius: 8px;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+/* Mensajes de error */
+.error-message {
+    color: #dc3545;
+    font-weight: bold;
+    margin-top: 10px;
+}
